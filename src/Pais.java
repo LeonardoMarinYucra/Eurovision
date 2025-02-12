@@ -24,6 +24,6 @@ public class Pais {
 
     @Override
     public String toString(){
-        return "Nombre del País: " + nombre + ", Participante: " + nombreParticipante + ", Canción: " + cancion + ", Puntuación: " + puntuacion;
+        return "Nombre del País: " + nombre + ", Participante: " + nombreParticipante + ", Canción: " + cancion + ", Puntuación: " + puntuacion ;
     }
 }
