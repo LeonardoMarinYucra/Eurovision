@@ -4,43 +4,65 @@ public class Eurovision {
     private List<Pais> paisList = new ArrayList<>();
 
 
+
     public Eurovision(List<Pais> paisList){
         this.paisList=paisList;
+        votarTodos();
     }
 
-    public void votar(){
 
-//        List<Pais> auxPais = paisList;
-//        List<Integer> votos = new ArrayList<>(List.of(1,2,3,4,5,6,7,8,10,12));
-//         Collections.shuffle(votos);
-//        for (int i = 0; i < 10; i++) {
-//            int auxRandom = (int) Math.random()* auxPais.size();
-//            if (auxPais.get(auxRandom)==pais && i>10){
-//                i--;
-//                auxPais.remove(auxRandom);
-//            }else{
-//                auxPais.get(auxRandom).setPuntuacion(votos.get(i));
-//
-//            }
-//        }
+    private void votarTodos(){
+
+        Iterator<Pais> iterador = paisList.iterator();
+        while (iterador.hasNext()) {
+            Pais pais = iterador.next();
+            List<Pais> auxPais = new ArrayList<>(paisList);
+            auxPais.remove(pais);
+            Collections.shuffle(auxPais);
+            pais.votar(auxPais);
+        }
+    }
+
+    public String mostrarPaises(){
+        String cadenaPaises = "\nLISTA DE PAISES\n\n";
+        for (Pais pais:this.paisList){
+            cadenaPaises += pais.toString() + "\n";
+            cadenaPaises += "---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
+        }
+        return cadenaPaises;
+    }
+    public String mostrarPaisesAlfabeticamente(){
+        String cadenaPaisesAlf = "\nPAISES POR ORDEN ALFABÉTICO\n\n";
+        List<Pais> paisesAlf = new ArrayList<>(paisList);
+        Collections.sort(paisesAlf);
+        for (Pais pais:paisesAlf){
+            cadenaPaisesAlf += pais.toString() + ", Votos:" + pais.getVotacionesRealizadas() + "\n";
+            cadenaPaisesAlf += "---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
+        }
+        return cadenaPaisesAlf;
+    }
+    public String mostrarPaisesPuntuacion(){
+        String cadenaPaisesPt = "\nPAISES POR ORDEN PUNTUACIÓN\n\n";
+        List<Pais> paisesPt = new ArrayList<>(paisList);
+        Collections.sort(paisesPt,(a,b)->b.getPuntuacion()-a.getPuntuacion());
+        for (Pais pais:paisesPt){
+            cadenaPaisesPt += pais.toString() + ", Puntuación:" + pais.getPuntuacion() + "\n";
+            cadenaPaisesPt += "---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
+        }
+        return cadenaPaisesPt;
+    }
+    public String cancionesAlfabeticamente(){
+        String cadenaCanciones = "\nCANCIONES ORDENADAS ALFABÉTICAMENTE\n\n";
+        List<String> canciones = new ArrayList<>();
         for (Pais pais:paisList){
-            List<Pais> auxPais = paisList;
-        List<Integer> votos = new ArrayList<>(List.of(1,2,3,4,5,6,7,8,10,12));
-         Collections.shuffle(votos);
-        for (int i = 0; i < 10; i++) {
-            int auxRandom = (int) (Math.random()*auxPais.size());
-            if (auxPais.get(auxRandom)==pais && i>10){
-                i--;
-                auxPais.remove(auxRandom);
-            }else{
-                auxPais.get(auxRandom).setPuntuacion(votos.get(i));
-
-            }
+            canciones.add(pais.getCancion());
         }
+        Collections.sort(canciones);
+        for (String cancion:canciones){
+            cadenaCanciones += cancion + "\n";
         }
+        return cadenaCanciones;
     }
-
-
 
     @Override
     public String toString(){
