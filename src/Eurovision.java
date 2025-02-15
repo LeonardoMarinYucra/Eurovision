@@ -44,7 +44,7 @@ public class Eurovision {
     public String mostrarPaisesPuntuacion(){
         String cadenaPaisesPt = "\nPAISES POR ORDEN PUNTUACIÓN\n\n";
         List<Pais> paisesPt = new ArrayList<>(paisList);
-        Collections.sort(paisesPt,(a,b)->b.getPuntuacion()-a.getPuntuacion());
+        Collections.sort(paisesPt);
         for (Pais pais:paisesPt){
             cadenaPaisesPt += pais.toString() + ", Puntuación:" + pais.getPuntuacion() + "\n";
             cadenaPaisesPt += "---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";

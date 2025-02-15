@@ -47,13 +47,12 @@ public class Pais implements Comparable<Pais> {
     }
 
     @Override
-    public int compareTo(Pais o) {
-        return this.getNombre().compareTo(o.getNombre());
-    }
-
-    @Override
     public String toString(){
         return "Nombre del País: " + nombre + ", Participante: " + nombreParticipante + ", Canción: " + cancion ;
     }
 
+    @Override
+    public int compareTo(Pais o) {
+        return o.getPuntuacion()-puntuacion;
+    }
 }
