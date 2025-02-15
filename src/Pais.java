@@ -1,3 +1,5 @@
+import com.sun.source.tree.Tree;
+
 import java.util.Comparator;
 import java.util.List;
 import java.util.TreeMap;
@@ -29,6 +31,9 @@ public class Pais implements Comparable<Pais> {
     public TreeMap<String,Integer> getVotacionesRealizadas(){
         return votacionesRealizadas;
     }
+    public TreeMap<String,Integer> getVotacionesRecibidas(){
+        return votacionesRecibidas;
+    }
     public int getPuntuacion(){
         return puntuacion;
     }
@@ -40,7 +45,6 @@ public class Pais implements Comparable<Pais> {
             paisList.get(i).recibirVoto(this.getNombre(),puntuaciones[i]);
         }
     }
-
     public void recibirVoto(String nombre,int voto){
         this.votacionesRecibidas.put(nombre,voto);
         this.puntuacion+=voto;

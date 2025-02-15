@@ -61,12 +61,12 @@ public class Main {
         Eurovision eurovision2024 = new Eurovision(paises);
 
 
-//        System.out.println(eurovision2024.mostrarPaises());
-//        System.out.println(eurovision2024.mostrarPaisesAlfabeticamente());
+        System.out.println(eurovision2024.mostrarPaises());
+        System.out.println(eurovision2024.mostrarPaisesAlfabeticamente());
         System.out.println(eurovision2024.mostrarPaisesPuntuacion());
-//        System.out.println(eurovision2024.);
-//        System.out.println(eurovision2024.cancionesAlfabeticamente());
-//        System.out.println(eurovision2024.);
+        System.out.println(eurovision2024.paisGanador());
+        System.out.println(eurovision2024.cancionesAlfabeticamente());
+        System.out.println(eurovision2024.paisPuntuacionMax());
 
     }
 }
